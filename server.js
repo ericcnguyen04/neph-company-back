@@ -11,13 +11,16 @@ const PORT = process.env.PORT || 3000
 const rowdyResults = rowdy.begin(app)
 
 app.use(cors())
-
+app.use(express.json())
 
 // =======================
 
 app.get('/', (req, res) => {
-    res.send('Hello World')
+    res.json({msg: 'Hello World'})
 })
+
+// controllers and routes
+app.use('/users', require('./controllers/users.js'))
 
 
 // step 3: "export" or listen on port
