@@ -1,5 +1,6 @@
 // step 1: setting up express.js to handle HTTP req and res
 const express = require('express')
+const rowdy = require('rowdy-logger') // optional: for developer experience
 
 // step 2: configure express app
 const app = express()
