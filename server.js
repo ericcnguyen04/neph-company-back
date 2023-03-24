@@ -1,5 +1,6 @@
 // step 1: setting up express.js to handle HTTP req and res
 const express = require('express')
+const cors = require('cors') // security feature
 const rowdy = require('rowdy-logger') // optional: for developer experience
 
 // step 2: configure express app
@@ -9,6 +10,7 @@ const PORT = process.env.PORT || 3000
 // for debug logging
 const rowdyResults = rowdy.begin(app)
 
+app.use(cors())
 
 
 // =======================
