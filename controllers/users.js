@@ -20,7 +20,7 @@ router.post('/register', async (req, res) => {
         })
 
         // don't allow emails to register twice
-        if (findUder) return res.status(400).json({ msg: 'email exists already' })
+        if (findUser) return res.status(400).json({ msg: 'email exists already' })
 
         // hashing password
         const password = req.body.password
