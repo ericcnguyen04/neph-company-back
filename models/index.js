@@ -2,7 +2,7 @@
 const mongoose = require("mongoose")
 require('dotenv').config()
 
-
+// accessing the local database
 const dbName = 'nephData'
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/' + dbName
 

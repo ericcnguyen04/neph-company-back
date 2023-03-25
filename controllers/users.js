@@ -19,6 +19,14 @@ router.post('/register', async (req, res) => {
             email: req.body.email
         })
 
+        // don't allow emails to register twice
+        if (findUder) return res.status(400).json({ msg: 'email exists already' })
+
+        // hashing password
+        const password = req.body.password
+        const saltRounds = 12;
+        const hashedPassword = await bcrypt.hash(password, saltRounds)
+
     } catch(err) {
         console.log(err)
         res.status(500).json({ msg: 'server error' })
