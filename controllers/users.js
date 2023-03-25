@@ -15,7 +15,9 @@ router.get('/', (req, res) => {
 router.post('/register', async (req, res) => {
     try {
         // checking if user exist already
-        const findUser = await db
+        const findUser = await db.User.findOne({
+            email: req.body.email
+        })
 
     } catch(err) {
         console.log(err)
