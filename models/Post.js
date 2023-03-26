@@ -34,4 +34,4 @@ const PostSchema = new mongoose.Schema({
 
 // turn the schema into a model so we can use it in our js
 // exports
-module.exports = mongoose.model('Item', ItemSchema)
+module.exports = mongoose.model('Post', PostSchema)

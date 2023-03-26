@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 // controllers and routes
-app.use('/users', require('./controllers/users.js'))
+app.use('/users', require('./controllers/api-v1/users.js'))
 
 
 // step 3: "export" or listen on port

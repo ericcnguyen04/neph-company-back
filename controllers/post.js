@@ -9,7 +9,6 @@ const authLockedRoute = require('./api-v1/authLockedRoute')
 // GET /:id -- get one item
 router.get('/:id', async (req,res) =>{
     try{
-       
         const item = await db.Item.findOne({
             _id: req.params.id
         })
