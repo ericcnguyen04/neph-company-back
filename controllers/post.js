@@ -96,3 +96,37 @@ router.put('/:id', authLockedRoute, async (req,res) =>{
         })
     }
 })
+
+//DELETE /:id - deletes an item from items table and the reference in the users table
+router.delete('/:id', async (req, res) =>{
+    try{
+        //get item to delete from items table, need to get info before we delete the table to use in the user table
+        const postToDelete = await db.Post.findOne({
+            _id: req.params.id
+        })
+        
+        //find user that created the item in the user table
+        const getUser = res.locals.user
+        // await db.User.findOne({
+        //     _id: itemToDelete.userId  
+        // })
+       
+        //update user table to remove one item from user table
+        const deleteFromUser = await db.User.updateOne(
+            {_id: postToDelete.userId},
+            // {_id: itemToDelete.userId},
+            {$pull: {items: {$in: [req.params.id]}}}
+        )
+
+        //delete entire item from item table
+        const deletedpost = await db.Post.findByIdAndDelete(req.params.id)
+
+        res.json('item deleted from items table and from user who created it')
+        
+    } catch(err){``
+        console.log(err)
+        res.status(500).json({
+            msg: 'internal server error, contact the system administrator'
+        })
+    }
+})
