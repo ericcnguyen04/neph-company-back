@@ -67,3 +67,32 @@ router.post('/new', authLockedRoute, async (req,res) =>{
         })
     }
 })
+
+// PUT /item/:id -- update one item
+router.put('/:id', authLockedRoute, async (req,res) =>{
+    try{
+
+    // update an existing item
+    const updatePost = await db.Post.updateOne( 
+        {_id: req.params.id} , 
+        { 
+            $set: {
+            title: req.body.title,
+            caption: req.body.caption , 
+            picture: req.body.picture , 
+            url: req.body.url
+            }
+        } ,
+        //upsert is an update or create command
+        {upsert: true, new: true}
+    )
+
+    res.json({msg: `user updated item`})
+
+    } catch(err){
+        console.log(err)
+        res.status(500).json({
+            msg: 'internal server error, contact the system administrator'
+        })
+    }
+})
