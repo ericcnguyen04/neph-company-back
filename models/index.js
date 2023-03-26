@@ -1,6 +1,6 @@
 // require mongoose package
 const mongoose = require("mongoose")
-require('dotenv').config()
+// require('dotenv').config()
 
 // accessing the local database
 const dbName = 'nephData'
@@ -25,5 +25,4 @@ db.on('error',  err => {
 
 module.exports = {
   User: require('./User'),
-  Item: require('./Item')
 }

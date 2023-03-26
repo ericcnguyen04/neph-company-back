@@ -1,6 +1,6 @@
 // required packages
 const router = require('express').Router()
-const db = require('../models/api-v1') // database
+const db = require('../models') // database
 const bcrypt = require('bcryptjs') // method to hash and compare passwords
 const jwt = require('jsonwebtoken') // used for authentication and authorization
 
