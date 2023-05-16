@@ -1,5 +1,6 @@
 // required packages
 const express = require('express')
+const {Post} = require('../models')
 const router = express.Router()
 const db = require('../models')
 const authLockedRoute = require('./api-v1/authLockedRoute')
@@ -21,7 +22,7 @@ router.get('/:id', async (req, res) =>{
     }
 })
 
-// GET / -- display all items
+// GET / -- display all itemss
 router.get('/', async (req, res) =>{
     try{
         const post = await db.Post.find()
